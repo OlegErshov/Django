@@ -29,8 +29,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+AUTH_USER_MODEL = 'login.CustomUser'
+
 INSTALLED_APPS = [
-    'login'
+    'login',
     'services',
     'django.contrib.admin',
     'django.contrib.auth',

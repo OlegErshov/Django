@@ -1,10 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 from django.core.validators import RegexValidator
-from typing import Any
 from django import forms
-from datetime import date
-from django.core.exceptions import ValidationError
 
 class UserCreateForm(UserCreationForm):
     email = forms.EmailField(required=True)

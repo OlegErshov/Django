@@ -1,13 +1,20 @@
-from django.http import HttpResponse
+
 from django.views.generic.edit import FormView
-from ..services.models import Client
+from services.models import Client
+from django.contrib.auth import login
+from django.contrib.auth.forms import AuthenticationForm
+import requests
+from django.contrib.auth import logout
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from .forms import UserCreateForm
 
 # Create your views here.
 
 class RegisterFormView(FormView):
     form_class = UserCreateForm
-    success_url = '/auth/login/'
+    success_url = ''
 
     template_name = 'register.html'
     print(123)
@@ -26,3 +33,29 @@ class RegisterFormView(FormView):
 
     def form_invalid(self, form) -> HttpResponse:
         return super(RegisterFormView, self).form_invalid(form)
+
+class LoginFormView(FormView):
+        form_class = AuthenticationForm
+
+        template_name = 'login.html'
+
+        quote = requests.get('https://favqs.com/api/qotd').json()
+
+        def get(self, request):
+            return render(request, 'login.html',
+                          context={'form': self.form_class(), 'quote': self.quote['quote']['body']})
+
+        success_url = '/'
+
+        def form_valid(self, form) -> HttpResponse:
+            self.user = form.get_user()
+
+            login(self.request, self.user)
+            return super(LoginFormView, self).form_valid(form)
+
+
+class LogoutView(FormView):
+    def get(self, request):
+        logout(request)
+
+        return HttpResponseRedirect('/')
