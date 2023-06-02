@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from .user_manager import CustomUserManager
 from django.utils.timezone import localtime
 from datetime import datetime
 
@@ -14,6 +15,7 @@ class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=50,
                                     help_text='Enter phone number')
 
+    objects = CustomUserManager()
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'email', 'date_of_birth', 'phone_number']
