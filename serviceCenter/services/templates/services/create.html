@@ -1,0 +1,24 @@
+{% extends "services/layout.html"  %}
+
+{% block name  %}
+    <h1>Добавление нового устройства</h1>
+{% endblock  %}
+
+{% block content  %}
+    <div class="features">
+
+        <h1>сама формочка для добавления</h1>
+      <form method="post">
+          {% csrf_token %}
+          {{ form }}
+          <button class="btn btn-success m-10"  type="submit">Добавить</button>
+      </form>
+    </div>
+
+
+{% endblock  %}
+
+
+{% block title  %}
+    <h1>Ремонт ноутбуков</h1>
+{% endblock  %}
