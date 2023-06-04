@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Device, Category
+from .models import Device
 from .forms import DeviceForm
 
 def index(request):

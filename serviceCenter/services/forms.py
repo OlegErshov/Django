@@ -3,7 +3,7 @@ from .models import Device
 class DeviceForm(forms.ModelForm):
     class Meta:
         model = Device
-        fields = ['name', 'image', 'device_category']
+        fields = ['name', 'image']
 
         widgets = {
             "name": forms.TextInput(attrs={
@@ -14,7 +14,5 @@ class DeviceForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'картинка устройства'
             }),
-            "device_category":forms.Select(attrs={
-                'class': 'form-control'
-            })
+
         }
