@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from .models import Device
+from .models import Device, Issue
 from .forms import DeviceForm, IssueForm
 from django.views.generic import ListView
 from django.core.exceptions import PermissionDenied
-
+from django.http import HttpResponseRedirect
+from django.http import HttpResponseNotFound
 # def index(request):
 #     return render(request, 'services/mainPage.html')
 
@@ -53,3 +54,28 @@ def create_issue(request):
 
     }
     return render(request, 'services/create_issue.html', data)
+
+def issue_edit(request):
+    if not request.user.is_staff:
+        raise PermissionDenied("Net dostupa")
+    try:
+        issue = Issue.objects.get(id=id)
+
+        form = IssueForm(initial={'issue_type': issue.issue_type, 'price': issue.price,
+                                 'device_type': issue.device_type})
+
+        if request.method == "POST":
+            issue.title = request.POST.get('issue_type')
+            print(request.POST.get('title'))
+            issue.price = request.POST.get('price')
+            issue.device_type = Device.objects.get(id=request.POST.get('device_type'))
+
+            issue.save()
+            return HttpResponseRedirect("/")
+        else:
+            return render(request, "services/edit.html", {"issue": issue, 'form': form})
+    except issue.DoesNotExist:
+        return HttpResponseNotFound("<h2>book not found</h2>")
+
+
+def detail(request):
