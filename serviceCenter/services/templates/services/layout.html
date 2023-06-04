@@ -28,9 +28,13 @@
     <ul>
         <a href="{% url 'home' %}"><li>Главная</li></a>
         <a href="{% url 'services' %}"><li>Наши услуги</li></a>
+        <a href=""><li>Контакты</li></a>
+        {% if user.is_staff %}
         <a href="{% url 'create'%}"><li>Добавить устройство</li></a>
         <a href="{% url 'createIssue' %}"><li>Добавить услугу</li></a>
-        <a href=""><li>Контакты</li></a>
+        {% endif %}
+
+
     </ul>
     
 </aside>

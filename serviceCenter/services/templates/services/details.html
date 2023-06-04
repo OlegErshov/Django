@@ -2,13 +2,28 @@
     <html>
     <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <title>Edit</title>
     </head>
     <body>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Save" >
-        </form>
+
+            <h5>{{ device.name }}</h5>>
+            <table class="table table-striped table-dark">
+                 <thead class="thead-dark">
+                    <tr>
+                        <th>Вид услуги</th> <th>цена</th> <th></th>
+                    </tr>
+                </thead>
+                {%for issue in issues%}
+                    <tr>
+                        <td>{{issue.issue_type}}</td> <td>{{issue.price}}</td>
+                        <td><a href="{% url 'editIssue' issue.id %}"><button class="btn btn-warning">изменить</button></a></td>
+                    </tr>
+                {% empty %}
+                <tr>Статей не обнаружено :(</tr>
+                {% endfor %}
+            </table>
+
+
     </body>
     </html>

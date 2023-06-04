@@ -55,11 +55,11 @@ def create_issue(request):
     }
     return render(request, 'services/create_issue.html', data)
 
-def issue_edit(request):
+def issue_edit(request,id):
     if not request.user.is_staff:
         raise PermissionDenied("Net dostupa")
     try:
-        issue = Issue.objects.get(id=id)
+        issue = Issue.objects.get(id=id) # problem because id - device-id
 
         form = IssueForm(initial={'issue_type': issue.issue_type, 'price': issue.price,
                                  'device_type': issue.device_type})
@@ -78,4 +78,12 @@ def issue_edit(request):
         return HttpResponseNotFound("<h2>book not found</h2>")
 
 
-def detail(request):
+def detail(request, id):
+    device = Device.objects.get(id=id)
+    issues = Issue.objects.filter(device_type__name=device.name)
+    data = {
+        'device': device,
+        'issues': issues
+
+    }
+    return render(request, 'services/details.html', data)
