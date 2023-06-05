@@ -33,6 +33,7 @@ AUTH_USER_MODEL = 'login.CustomUser'
 CART_SESSION_ID = 'cart'
 
 INSTALLED_APPS = [
+    'order',
     'cart',
     'login',
     'services',

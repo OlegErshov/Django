@@ -19,37 +19,26 @@
         </thead>
         <tbody>
         {% for item in cart %}
-            {% with book=item.book %}
+            {% with issue=item.issue %}
                 <tr>
                     <td>
-                        <a href="{{ book.get_absolute_url }}">
+                        <a href="{{ device.get_absolute_url }}">
                             <img src="
-                                {% if book.image %}
-                                    {{ book.image.url }}
+                                {% if device.image %}
+                                    {{ device.image.url }}
                                 {% else %}
                                     {% static 'img/no_image.png' %}
                                 {% endif %}">
                         </a>
                     </td>
-                    <td>{{ book.title }}</td>
-                    <td>{{ item.quantity }}</td>
+                    <td>{{ issue.device_type }}</td>
+                    <td>{{ issue.issue_type }}</td>
                     <td><a href="{% url 'cart:cart_remove' book.id %}">Remove</a></td>
                     <td class="num">{{ item.cost }}</td>
                     <td class="num">{{ item.total_price }}</td>
                 </tr>
             {% endwith %}
         {% endfor %}
-        <tr class="total">
-            <td>Total</td>
-            <td colspan="4"></td>
-            <td class="num">{{ cart.get_total_price }}</td>
-        </tr>
         </tbody>
     </table>
-    <p class="text-right">
-        <a href="{% url 'shop:book_list' %}" class="button light">Continue shopping</a>
-        <a href="{% url 'order:order_create' %}" class="button">
-            Checkout
-        </a>
-    </p>
 {% endblock %}

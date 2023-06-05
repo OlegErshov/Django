@@ -7,4 +7,5 @@ urlpatterns = [
      path('', include('services.urls')),
      path('auth/', include('login.urls', namespace='login')),
      path('cart/', include('cart.urls', namespace='cart')),
+     path('order/', include('order.urls', namespace='order')),
 ]
