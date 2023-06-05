@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from .cart import Cart
 from .forms import CartIssueAddForm
-from ..services.models import Issue
+from services.models import Issue
 # Create your views here.
 @require_POST
 def cart_add(request, book_id):

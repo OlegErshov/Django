@@ -18,6 +18,7 @@
                     <tr>
                         <td>{{issue.issue_type}}</td> <td>{{issue.price}}</td>
                         <td><a href="{% url 'editIssue' issue.id %}"><button class="btn btn-warning">изменить</button></a></td>
+                        <td><a href="{% url 'cart:cart_details' %}"><button class="btn btn-warning">добавить в корзину</button></a></td>
                     </tr>
                 {% empty %}
                 <tr>Статей не обнаружено :(</tr>

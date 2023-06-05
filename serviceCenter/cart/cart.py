@@ -1,5 +1,5 @@
 from django.conf import settings
-from ..services.models import Issue
+from services.models import Issue
 class Cart(object):
     def __init__(self, request):
         """

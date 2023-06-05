@@ -30,8 +30,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 AUTH_USER_MODEL = 'login.CustomUser'
+CART_SESSION_ID = 'cart'
 
 INSTALLED_APPS = [
+    'cart',
     'login',
     'services',
     'django.contrib.admin',
