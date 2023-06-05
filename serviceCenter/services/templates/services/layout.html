@@ -24,6 +24,41 @@
 <aside>
     <img  src="{% static 'services/img/logo.jpg' %}" height="50" width="70"  alt="logo">
     <span class="logo"> пелемешки от Олежки</span>
+    <div id="header">
+         <p>Current Date <span id='date'></span>.</p>
+        <p>Current time <span id='time'></span></p>
+        <p>Current time zone <span id='zone'></span></p>
+          <script>
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                let mm = today.getMonth() + 1; // Months start at 0!
+                let dd = today.getDate();
+                let h = today.getHours();
+                if (h<10)
+                    h = '0' + h;
+                let min = today.getMinutes();
+                if (min < 10)
+                    min = '0' + min;
+                let sec = today.getSeconds();
+                if (sec < 10)
+                    sec = '0' + sec;
+
+                if (dd < 10) dd = '0' + dd;
+                if (mm < 10) mm = '0' + mm;
+
+                let formattedToday = dd + '/' + mm + '/' + yyyy;
+                let time = h+":"+min+":"+sec;
+                let tz = -(new Date().getTimezoneOffset() / 60);
+                if(tz>0){
+                    tz = "+" + tz;
+                }
+                tz = "UTC" + tz;
+                document.getElementById('date').innerHTML=formattedToday;
+                document.getElementById('time').innerHTML=time;
+                document.getElementById('zone').innerHTML=tz;
+        </script>
+
+    </div>
     <h3>Навигация</h3>
     <ul>
         <a href="{% url 'services:home' %}"><li>Главная</li></a>
