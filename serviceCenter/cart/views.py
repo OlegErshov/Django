@@ -7,12 +7,12 @@ from .forms import CartIssueAddForm
 from services.models import Issue
 # Create your views here.
 @require_POST
-def cart_add(request, book_id):
+def cart_add(request, issue_id):
     if not request.user.is_authenticated:
         raise PermissionDenied("Net dostupa")
 
     cart = Cart(request)
-    issue = get_object_or_404(Issue, id=book_id)
+    issue = get_object_or_404(Issue, id=issue_id)
     form = CartIssueAddForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
@@ -21,6 +21,14 @@ def cart_add(request, book_id):
                  update_quantity=cd['update'])
     return redirect('cart:cart_details')
 
+def cart_remove(request, issue_id):
+    if not request.user.is_authenticated:
+        raise PermissionDenied("Net dostupa")
+
+    cart = Cart(request)
+    book = get_object_or_404(Issue, id=issue_id)
+    cart.remove(book)
+    return redirect('cart:cart_details')
 def cart_detail(request):
     if not request.user.is_authenticated:
         raise PermissionDenied("Net dostupa")

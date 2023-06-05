@@ -5,12 +5,15 @@ from django.views.generic import ListView
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
+from cart.forms import CartIssueAddForm
 # def index(request):
 #     return render(request, 'services/mainPage.html')
 
 
 def services(request):
     devices = Device.objects.all()
+    cart_form = CartIssueAddForm()
+
     return render(request, 'services/ourServices.html', {'devices': devices})
 
 class all_devices_view(ListView):
@@ -81,9 +84,12 @@ def issue_edit(request,id):
 def detail(request, id):
     device = Device.objects.get(id=id)
     issues = Issue.objects.filter(device_type__name=device.name)
+    cart_form = CartIssueAddForm()
+
     data = {
         'device': device,
-        'issues': issues
+        'issues': issues,
+        'cart_form': cart_form
 
     }
     return render(request, 'services/details.html', data)

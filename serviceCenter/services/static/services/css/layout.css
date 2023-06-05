@@ -57,3 +57,37 @@ nav .a{
     text-color: #fff;
 }
 
+.order_info{
+     text-color: #fff;
+}
+
+table.cart{
+     text-color: #fff;
+}
+
+thead th, tbody tr.total {
+    background:#5993bb;
+    color:#fff;
+    font-weight:bold;
+}
+
+table th, table td {
+    text-align:left;
+    font-size:14px;
+    padding:10px;
+    margin:0;
+}
+
+tbody tr:nth-child(odd) {
+    background:#efefef;
+}
+tbody tr.subtotal {
+    background:#ccc;
+}
+
+td input[type="submit"] {
+    font-size:12px;
+    padding:4px 10px;
+}
+
+

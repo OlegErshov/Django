@@ -7,15 +7,14 @@
 
 {% block content %}
     <h1>Your shopping cart</h1>
-    <table class="cart">
+    <table>
         <thead>
-        <tr>
-            <th>Устройство</th>
-            <th>Услуга</th>
-            <th>Удалить</th>
-            <th>Цена</th>
-
-        </tr>
+            <tr>
+                <th>Устройство</th>
+                <th>Услуга</th>
+                <th>Удалить</th>
+                <th>Цена</th>
+            </tr>
         </thead>
         <tbody>
         {% for item in cart %}
@@ -33,12 +32,19 @@
                     </td>
                     <td>{{ issue.device_type }}</td>
                     <td>{{ issue.issue_type }}</td>
-                    <td><a href="{% url 'cart:cart_remove' book.id %}">Remove</a></td>
-                    <td class="num">{{ item.cost }}</td>
+                    <td><a class="btn btn-danger" href="{% url 'cart:cart_remove' issue.id %}">Remove</a></td>
+                    <td class="num">{{ item.price }}</td>
                     <td class="num">{{ item.total_price }}</td>
                 </tr>
             {% endwith %}
         {% endfor %}
         </tbody>
     </table>
+
+    <p class="text-right">
+        <a href="{% url 'services:home' %}" class="btn btn-warning">Continue shopping</a>
+        <a href="{% url 'order:order_create' %}" class="btn btn-warning">
+            Checkout
+        </a>
+    </p>
 {% endblock %}

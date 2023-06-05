@@ -7,9 +7,12 @@ app_name = 'cart'
 
 urlpatterns = [
     path('', views.cart_detail, name='cart_details'),
-    path('add/<int:book_id>/',
+    path('add/<int:issue_id>/',
          views.cart_add,
          name='cart_add'),
+    path('remove/<int:issue_id>/',
+         views.cart_remove,
+         name='cart_remove')
 ]
 
 if settings.DEBUG:
