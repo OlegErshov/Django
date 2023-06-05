@@ -1,5 +1,6 @@
 from django.conf import settings
 from services.models import Issue
+from decimal import Decimal
 class Cart(object):
     def __init__(self, request):
         """
@@ -32,3 +33,16 @@ class Cart(object):
         # Отметить сеанс как "измененный", чтобы убедиться, что он сохранен
         self.session.modified = True
 
+    def __iter__(self):
+        """
+        Перебор элементов в корзине и получение продуктов из базы данных.
+        """
+        issue_ids = self.cart.keys()
+        # получение объектов product и добавление их в корзину
+        issues = Issue.objects.filter(id__in=issue_ids)
+        for issue in issues:
+            self.cart[str(issue.id)]['issue'] = issue
+
+        for item in self.cart.values():
+            item['price'] = Decimal(item['price'])
+            yield item
