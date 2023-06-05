@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Device(models.Model):
 
@@ -21,6 +21,9 @@ class Issue(models.Model):
     price = models.DecimalField(max_digits=10,decimal_places=2)
 
     device_type = models.ForeignKey(Device, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('services:detail', args=[str(self.id)])
     def __str__(self):
         return self.issue_type
 

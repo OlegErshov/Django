@@ -34,8 +34,23 @@
         <a href="{% url 'createIssue' %}"><li>Добавить услугу</li></a>
         {% endif %}
 
-
     </ul>
+     <div class="cart">
+        {%if user.is_authenticated%}
+        {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+                Your cart:
+                <a href="{% url 'cart:cart_details' %}">
+                    {{ total_items }} item{{ total_items|pluralize }},
+                    ${{ cart.get_total_price }}
+                </a>
+            {% else %}
+                Your cart is empty.
+            {% endif %}
+        {% endwith %}
+        {%endif%}
+
+    </div>
     
 </aside>
 <main>
