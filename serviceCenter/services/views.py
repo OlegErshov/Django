@@ -12,9 +12,9 @@ from cart.forms import CartIssueAddForm
 
 def services(request):
     devices = Device.objects.all()
-    cart_form = CartIssueAddForm()
 
     return render(request, 'services/ourServices.html', {'devices': devices})
+
 
 class all_devices_view(ListView):
     model = Device
@@ -86,10 +86,17 @@ def detail(request, id):
     issues = Issue.objects.filter(device_type__name=device.name)
     cart_form = CartIssueAddForm()
 
+    sort_t = request.GET.get('sort')
+
+    if (str(sort_t) == 'ascending'):
+        issues = issues.order_by('price')
+    elif (str(sort_t) == 'descending'):
+        issues = issues.order_by('-price')
+
+
     data = {
         'device': device,
         'issues': issues,
-        'cart_form': cart_form
-
+        'cart_form':cart_form
     }
     return render(request, 'services/details.html', data)

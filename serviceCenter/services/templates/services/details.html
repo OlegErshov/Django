@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 {% load static%}
     <html>
@@ -8,46 +7,17 @@
         <title>Edit</title>
     </head>
 
-    <aside>
-    <img  src="{% static 'services/img/logo.jpg' %}" height="50" width="70"  alt="logo">
-    <span class="logo"> пелемешки от Олежки</span>
-    <h3>Навигация</h3>
-    <ul>
-        <a href="{% url 'services:home' %}"><li>Главная</li></a>
-        <a href="{% url 'services:services' %}"><li>Наши услуги</li></a>
-        <a href=""><li>Контакты</li></a>
-        {% if user.is_staff %}
-        <a href="{% url 'services:create'%}"><li>Добавить устройство</li></a>
-        <a href="{% url 'services:createIssue' %}"><li>Добавить услугу</li></a>
-        {% endif %}
-
-    </ul>
-     <div class="cart">
-        {%if user.is_authenticated%}
-        {% with total_items=cart|length %}
-            {% if cart|length > 0 %}
-                Your cart:
-                <a href="{% url 'cart:cart_details' %}">
-                    {{ total_items }} item{{ total_items|pluralize }},
-                    ${{ cart.get_total_price }}
-                </a>
-            {% else %}
-                Your cart is empty.
-            {% endif %}
-        {% endwith %}
-        {%endif%}
-
-    </div>
-
-</aside>
-
     <body>
+             <form action="{{ request.get_full_path }}" method="get">
+                <button class="btn btn-primary m-3" type="submit" name="sort" value="ascending">Сортировать по возрастанию</button>
+                <button class="btn btn-primary m-3" type="submit" name="sort" value="descending">Сортировать по убыванию</button>
+            </form>
 
             <h5>{{ device.name }}</h5>>
-            <table class="table">
+            <table class="table table-dark table-striped ">
                  <thead class="thead-dark">
                     <tr>
-                        <th>Вид услуги</th> <th>цена</th> <th></th>
+                        <th>Вид услуги</th> <th>цена</th> <th></th> <th></th>
                     </tr>
                 </thead>
 
@@ -56,6 +26,7 @@
                         <tr>
                             <td>{{issue.issue_type}}</td> <td>{{issue.price}}</td>
                             <td><a href="{% url 'services:editIssue' issue.id %}"><button class="btn btn-warning">изменить</button></a></td>
+                            {% if user.is_staff %}
                             <td>
                                 <form action="{% url 'cart:cart_add' issue.id %}" method="post">
                                     {{ cart_form }}
@@ -63,6 +34,7 @@
                                     <input type="submit" class="btn btn-warning" value="Add to cart">
                                 </form>
                             </td>
+                            {% endif %}
 
 
                         </tr>
