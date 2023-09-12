@@ -1,8 +1,8 @@
 from django import forms
-from .models import Device,Issue
+from .models import Device_type,Issue
 class DeviceForm(forms.ModelForm):
     class Meta:
-        model = Device
+        model = Device_type
         fields = ['name', 'image']
 
         widgets = {

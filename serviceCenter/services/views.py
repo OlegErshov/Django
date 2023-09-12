@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Device, Issue
+from .models import Device_type, Issue
 from .forms import DeviceForm, IssueForm
 from django.views.generic import ListView
 from django.core.exceptions import PermissionDenied
@@ -11,15 +11,20 @@ from cart.forms import CartIssueAddForm
 
 
 def services(request):
-    devices = Device.objects.all()
+    devices = Device_type.objects.all()
 
     return render(request, 'services/ourServices.html', {'devices': devices})
 
 
-class all_devices_view(ListView):
-    model = Device
-    template_name = 'services/mainPage.html'
-    context_object_name = 'devices'
+def all_devices(request):
+    device_types = Device_type.objects.all()
+    country = None
+    sort = request.GET.get('sort')
+    min_cost = request.GET.get('min_cost')
+    max_cost = request.GET.get('max_cost')
+
+    return render(request, 'services/mainPage.html',
+                  {'Device_type': device_types})
 
 def create(request):
 
@@ -71,7 +76,7 @@ def issue_edit(request,id):
             issue.title = request.POST.get('issue_type')
             print(request.POST.get('title'))
             issue.price = request.POST.get('price')
-            issue.device_type = Device.objects.get(id=request.POST.get('device_type'))
+            issue.device_type = Device_type.objects.get(id=request.POST.get('device_type'))
 
             issue.save()
             return HttpResponseRedirect("/")
@@ -82,7 +87,7 @@ def issue_edit(request,id):
 
 
 def detail(request, id):
-    device = Device.objects.get(id=id)
+    device = Device_type.objects.get(id=id)
     issues = Issue.objects.filter(device_type__name=device.name)
     cart_form = CartIssueAddForm()
 

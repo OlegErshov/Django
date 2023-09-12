@@ -4,7 +4,7 @@ from .import views
 app_name = 'services'
 
 urlpatterns = [
-    path('', views.all_devices_view.as_view(), name='home'),
+    path('', views.all_devices, name='home'),
     path('services', views.services, name="services"),
     path('create', views.create, name='create'),
     path('createIssue',views.create_issue,name='createIssue'),

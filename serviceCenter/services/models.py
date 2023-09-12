@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-class Device(models.Model):
+class Device_type(models.Model):
 
     # класс для типа товара, ноутбук, планшет, телефон, пк, наушники, и для них виды услуг из Issue
     name = models.CharField(max_length=100)
@@ -20,7 +20,8 @@ class Issue(models.Model):
 
     price = models.DecimalField(max_digits=10,decimal_places=2)
 
-    device_type = models.ForeignKey(Device, on_delete=models.CASCADE)
+    device_type = models.ForeignKey(Device_type
+                                    , on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('services:detail', args=[str(self.id)])

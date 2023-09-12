@@ -5,9 +5,11 @@
     <h1>Сервисный центр</h1>
 {% endblock  %}
 
+
 {% block content  %}
 <div class="row">
-    {% for devices in object_list%}
+
+    {% for devices in Device_type%}
   <div class="container">
     <div class="col-12 col-sm-6 col-lg-4">
         <div class="card-deck">
@@ -24,8 +26,7 @@
                  </a>
             </div>
             <div class="card-footer">
-                <a href=""><button class="btn btn-primary">Узнать подробнее</button></a>
-                <a href="{% url 'services:detail' devices.id %}"><button class="btn btn-warning">Подробнее</button></a>
+                <a href="{% url 'services:detail' devices.id %}"><button class="btn btn-warning">Оказываемые услуги</button></a>
             </div>
         </div>
         </div>
