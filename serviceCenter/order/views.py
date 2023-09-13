@@ -32,3 +32,9 @@ def order_create(request):
 
     return render(request, 'order/create.html',
                   {'cart': cart})
+
+def list_orders(request):
+    if not request.user.is_staff:
+        raise PermissionDenied("Permission denied.")
+    orders = Order.objects.all().order_by('client')
+    return render(request, 'list_orders.html', {'orders': orders})
