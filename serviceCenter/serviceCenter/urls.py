@@ -8,4 +8,5 @@ urlpatterns = [
      path('auth/', include('login.urls', namespace='login')),
      path('cart/', include('cart.urls', namespace='cart')),
      path('order/', include('order.urls', namespace='order')),
+     path('statistic/', include('statistic.urls', namespace='statistic'))
 ]

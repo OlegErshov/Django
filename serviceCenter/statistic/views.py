@@ -1,4 +1,6 @@
 from login.models import CustomUser
+from django.shortcuts import render
+from django.db.models import Sum, F
 import matplotlib.pyplot as plt
 from django.conf import settings
 import numpy as np

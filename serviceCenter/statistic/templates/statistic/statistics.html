@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Client List{% endblock %}
+{% block content %}
+
+ <h1>Client List</h1>
+  <table class="client-table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>First/last name</th>
+        <th>Email</th>
+        <th>Total Sales</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for client_entry in client_data %}
+      <tr>
+        <td><strong>{{ client_entry.client.username }}</strong></td>
+        <td>{{ client_entry.client.first_name }} {{ client_entry.client.last_name }}</td>
+        <td>{{ client_entry.client.email }}</td>
+        <td>{{ client_entry.total_sales|default:0 }}</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          {% if client_entry.orders %}
+          <table class="order-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Creation date</th>
+                <th>Total cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in client_entry.orders %}
+              <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.creation_date }}</td>
+                <td class="num">{{ order.get_total_cost }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p style="font-size: 17px;">No orders placed by <strong>{{ client_entry.client.username }}</strong></p>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Orders per Day</h2>
+  <img src="/media/orders_per_day.png" alt="Orders per day" />
+
+  <h2>Statistics</h2>
+  <p>Mean orders per day: {{ mean_orders_per_day }}</p>
+  <p>Median orders per day: {{ median_orders_per_day }}</p>
+  <p>Minimum orders per day: {{ min_orders_per_day }}</p>
+  <p>Maximum orders per day: {{ max_orders_per_day }}</p>
+{% endblock %}

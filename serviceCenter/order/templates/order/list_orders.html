@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+    <h2>Orders</h2>
+    {% if orders %}
+        {% for order in orders %}
+            <h3>Placed by {{ order.client }}</h3>
+            <ul>
+            {% for item in order.items.all %}
+                <li>
+                    <img src="{{ item.device.image.url }}" alt="{{ item.device.image }}" width="100" height="100"><br>
+                    {{ item.issue }} — cost: {{ item.price }} — quantity: {{ item.quantity }}
+                </li>
+                <br>
+                {% endfor %}
+            </ul>
+        {% empty %}
+            <p>No orders found.</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

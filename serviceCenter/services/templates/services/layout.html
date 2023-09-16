@@ -67,6 +67,7 @@
         {% if user.is_staff %}
         <a href="{% url 'services:create'%}"><li>Добавить устройство</li></a>
         <a href="{% url 'services:createIssue' %}"><li>Добавить услугу</li></a>
+        <a href="{% url 'statistic:statistics' %}"><li>Статистика</li></a>
         {% endif %}
 
     </ul>
