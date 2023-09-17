@@ -44,3 +44,9 @@ class Client(models.Model):
 
     def __str__(self):
         return self.email
+
+class News(models.Model):
+    image_url = models.CharField(null=False)
+    name = models.CharField(null=False)
+    description = models.CharField(null=False)
+    full_text = models.CharField(null=False)

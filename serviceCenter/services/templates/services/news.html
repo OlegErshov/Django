@@ -1,0 +1,22 @@
+{% extends "services/layout.html"  %}
+
+{% block name  %}
+    <title>News</title>
+{% endblock  %}
+
+{% block content  %}
+<div>
+    {% for n in news %}
+    <article>
+        <h2>{{n.name}}</h2>
+        <br>
+        <p>{{n.description}}</p>
+        <img src="{{n.img_url}}">
+        <br>
+        <details>
+            <summary>Continue</summary>
+            {{n.full_text }}
+        </details>
+    </article>
+</div>
+{% endblock  %}

@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from .models import Device_type, Issue
+from .models import Device_type, Issue,News
 from .forms import DeviceForm, IssueForm
 from django.views.generic import ListView
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
 from cart.forms import CartIssueAddForm
+
 # def index(request):
 #     return render(request, 'services/mainPage.html')
 
@@ -105,3 +106,12 @@ def detail(request, id):
         'cart_form':cart_form
     }
     return render(request, 'services/details.html', data)
+
+def news(request):
+    return render(request, "news.html", {"news": News.objects.all()})
+
+def faq(request):
+    return render(request, "faq.html")
+
+def about_us(request):
+    return  render(request,"about_us.html")
