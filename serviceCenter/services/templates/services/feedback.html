@@ -1,0 +1,34 @@
+{% extends "services/layout.html"  %}
+
+{% block name  %}
+    <title>Feedback</title>
+{% endblock  %}
+
+
+{% block content  %}
+<div>
+     <form method="post">
+          {% csrf_token %}
+          {{ form }}
+          <button type="submit">Добавить отзыв</button>
+      </form>
+</div>
+
+<div>
+    {% for feedback in feedbacks%}
+    <article>
+        <h3>{{feedback.client.name}}</h3>
+        <h3>Оценка от 1 до 5 {{feedback.mark}} </h3>
+        
+        <br>
+        
+        <pre>
+            {{ feedback.text }}
+        </pre>
+        <hr>
+        
+        <img src="">
+
+    </article>
+</div>
+{% endblock  %}

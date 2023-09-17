@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Device_type, Issue,News
-from .forms import DeviceForm, IssueForm
+from .models import Device_type, Issue,News,FeedBack
+from .forms import DeviceForm, IssueForm, FeedBackForm
 from django.views.generic import ListView
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
@@ -115,3 +115,21 @@ def faq(request):
 
 def about_us(request):
     return  render(request,"about_us.html")
+
+def feed_back(request):
+    if request.method == 'POST':
+        form = FeedBackForm(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            error = 'MISTAKE'
+
+    feed_backs = FeedBack.objects.all()
+
+    form = IssueForm()
+
+    data = {
+        'form': form,
+        'feedbacks': feed_backs
+    }
+    return render(request, 'services/feedback.html', data)

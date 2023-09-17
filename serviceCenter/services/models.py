@@ -50,3 +50,14 @@ class News(models.Model):
     name = models.CharField(null=False)
     description = models.CharField(null=False)
     full_text = models.CharField(null=False)
+
+class FeedBack(models.Model):
+    client = models.ForeignKey(Client
+                                    , on_delete=models.CASCADE)
+    text = models.CharField(null = False, max_length=350)
+
+    mark = models.DecimalField(null = False)
+
+    image = models.ImageField()
+
+    time = models.TimeField(null= False)
