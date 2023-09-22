@@ -63,11 +63,12 @@
     <ul>
         <a href="{% url 'services:home' %}"><li>Главная</li></a>
         <a href="{% url 'services:services' %}"><li>Наши услуги</li></a>
-        <a href=""><li>Контакты</li></a>
+        <a href="{% url 'services:contacts'%}"><li>Контакты</li></a>
         {% if user.is_staff %}
         <a href="{% url 'services:create'%}"><li>Добавить устройство</li></a>
         <a href="{% url 'services:createIssue' %}"><li>Добавить услугу</li></a>
-        <a href="{% url 'statistic:statistics' %}"><li>Статистика</li></a>
+        <a href="{% url 'statistic:history' %}"><li>History</li></a>
+        <a href="{% url 'statistic:analyze' %}"><li>Analyze</li></a>
         {% endif %}
 
     </ul>

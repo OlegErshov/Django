@@ -1,0 +1,42 @@
+{% extends "services/layout.html" %}
+{% load static %}
+
+{% block title %}
+<title>Order history</title>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container text-center">
+    <div class="row align-items-start">
+        <div class="col">
+        </div>
+        <div class="col">
+            <table style="margin-top: 10px;" class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order.created }}</td>
+                        <td>{{ order.get_total_cost }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <input class="GoBackButton" type="button" value="Go back to catalog" onclick="history.back()">
+
+        </div>
+        <div class="col">
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

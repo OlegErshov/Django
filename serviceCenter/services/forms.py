@@ -41,10 +41,10 @@ class IssueForm(forms.ModelForm):
 class FeedBackForm(forms.ModelForm):
     class Meta:
         model = FeedBack
-        fields = ['client_name', 'text', 'image', 'mark','time']
+        fields = ['client', 'text', 'image', 'mark','time']
 
         widgets = {
-            "client_na,e": forms.Select(attrs={
+            "client": forms.Select(attrs={
                 'class': 'form-control',
                 'placeholder': 'Укажите ваше имя',
             }),

@@ -108,13 +108,16 @@ def detail(request, id):
     return render(request, 'services/details.html', data)
 
 def news(request):
-    return render(request, "news.html", {"news": News.objects.all()})
+    return render(request, "services/news.html", {"news": News.objects.all()})
 
 def faq(request):
-    return render(request, "faq.html")
+    return render(request, "services/faq.html")
 
 def about_us(request):
-    return  render(request,"about_us.html")
+    return  render(request,"services/about_us.html")
+
+def contacts(request):
+    return render(request,"services/contacts.html")
 
 def feed_back(request):
     if request.method == 'POST':

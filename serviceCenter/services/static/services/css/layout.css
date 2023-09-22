@@ -90,4 +90,8 @@ td input[type="submit"] {
     padding:4px 10px;
 }
 
+p {
+	color: rgb(0, 255, 0);
+}
+
 

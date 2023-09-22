@@ -3,11 +3,21 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from services.models import Issue, Client
+from django.core.validators import MaxValueValidator, MinValueValidator
+from decimal import Decimal
 
 
 class Order(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True)
     created = models.DateTimeField(auto_now_add=True)
+
+    cost = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        help_text="Enter product cost",
+        validators=[MinValueValidator(Decimal("0.01"))],
+        default=0
+    )
 
     class Meta:
         ordering = ('-created',)
