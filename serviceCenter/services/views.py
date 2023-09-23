@@ -1,11 +1,16 @@
 from django.shortcuts import render
-from .models import Device_type, Issue,News,FeedBack
+from .models import Device_type, Issue,News,FeedBack, Stuff
 from .forms import DeviceForm, IssueForm, FeedBackForm
 from django.views.generic import ListView
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
 from cart.forms import CartIssueAddForm
+from django.contrib.auth import logout
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+import requests
 
 # def index(request):
 #     return render(request, 'services/mainPage.html')
@@ -19,13 +24,17 @@ def services(request):
 
 def all_devices(request):
     device_types = Device_type.objects.all()
+    news = News.objects.all()
     country = None
     sort = request.GET.get('sort')
     min_cost = request.GET.get('min_cost')
     max_cost = request.GET.get('max_cost')
+    quote = requests.get('https://favqs.com/api/qotd').json()
 
     return render(request, 'services/mainPage.html',
-                  {'Device_type': device_types})
+                  {'Device_type': device_types,
+                   'News': news,
+                   'quote': quote['quote']['body']})
 
 def create(request):
 
@@ -117,7 +126,8 @@ def about_us(request):
     return  render(request,"services/about_us.html")
 
 def contacts(request):
-    return render(request,"services/contacts.html")
+    workers = Stuff.objects.all()
+    return render(request,"services/contacts.html",{'workers': workers})
 
 def feed_back(request):
     if request.method == 'POST':
@@ -129,7 +139,7 @@ def feed_back(request):
 
     feed_backs = FeedBack.objects.all()
 
-    form = IssueForm()
+    form = FeedBackForm(request.POST)
 
     data = {
         'form': form,

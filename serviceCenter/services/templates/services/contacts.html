@@ -8,79 +8,29 @@
 <div>
   <h2>Contacts</h2>
 
-  <div>
-    <p>Worker 1</p>
-    <ul>
-      <li>
-        <img src="">
-      </li>
-      <li>
-        <small>gmail.com</small>
-      </li>
-      <li>
-        <small>+666-66-666-66-66</small>
-      </li>
-      <li>
-        <p>
-          ASdksldgj;hsliuf js;odhfuyipewyli fjk;sd sdf
-          sdfsdgjo;goisudfhjkewn;ijl/ kdsf
-          sdfjiwl7iuy;q/o;ke lmsdf
-          fs;dkfouhquowpel';ds ;fs
-          dlgewipfoiewjfewf
-        </p>
-      </li>
-    </ul>
+  <div style="width: 200px, padding: 50px">
+    {%for worker in workers%}
+
+      <p>{{worker.first_name}} {{worker.last_name}}</p>
+      <ul>
+        <li>
+          <img src="{{worker.image.url}}">
+        </li>
+        <li>
+          <strong>email:</strong><b> {{worker.email}}</b>
+        </li>
+        <li>
+          <strong>phone:</strong><small>{{worker.phone_number}}</small>
+        </li>
+        <li>
+          <pre>
+            <strong>Description: </strong><em>{{worker.job_description}}</em>
+          </pre>
+        </li>
+      </ul>
+    {%endfor%}
   </div>
 
-  <div>
-    <p>Worker 2</p>
-    <ul>
-      <li>
-        <img src="">
-      </li>
-      <li>
-        <small>gmail.com</small>
-      </li>
-      <li>
-        <small>+111-11-111-11-11</small>
-      </li>
-      <li>
-        <p>
-          ASdksldgj;hsliuf js;odhfuyipewyli fjk;sd sdf
-          sdfsdgjo;goisudfhjkewn;ijl/ kdsf
-          sdfjiwl7iuy;q/o;ke lmsdf
-          fs;dkfouhquowpel';ds ;fs
-          dlgewipfoiewjfewf
-        </p>
-      </li>
-    </ul>
-  </div>
-
-</div>
-
-<div>
-  <p>Worker 3</p>
-    <ul>
-      <li>
-        <img src="">
-      </li>
-      <li>
-        <small>gmail.com</small>
-      </li>
-      <li>
-        <small>+333-33-333-33-33</small>
-      </li>
-      <li>
-        <p>
-         ASdksldgj;hsliuf js;odhfuyipewyli fjk;sd sdf
-          sdfsdgjo;goisudfhjkewn;ijl/ kdsf
-          sdfjiwl7iuy;q/o;ke lmsdf
-          fs;dkfouhquowpel';ds ;fs
-          dlgewipfoiewjfewf
-        </p>
-      </li>
-    </ul>
-  </div>
 
 
 {% endblock  %}

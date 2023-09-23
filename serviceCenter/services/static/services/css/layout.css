@@ -1,12 +1,18 @@
 body{
     background: #2c2c2c;
 }
+
+.news{
+    width: 200px;
+    padding: 50px;
+}
+
 aside{
 
     background: #181818;
     float: left;
     width: 20%;
-    height: 100vh;
+    height: 2000px;
     padding: 2%;
     color: #fff;
     border-right: 5px solid #4d4d4d;
@@ -44,6 +50,10 @@ main .features{
     margin-top: 100px;
     text-align: center;
     width: 75%;
+}
+
+bold{
+    color: rgb(0, 255, 0);
 }
 
 form {
@@ -94,4 +104,47 @@ p {
 	color: rgb(0, 255, 0);
 }
 
+pre {
+    color: rgb(0, 255, 0);
+    width : 200px;
+}
 
+strong {
+    color: rgb(0, 255, 0);
+}
+
+small {
+    color: white;
+}
+article {
+    color: white;
+}
+
+hr{
+    color: white;
+}
+
+ol{
+    color: white;
+    margin-left: 15px;
+}
+
+figcaption{
+    color: rgb(0, 255, 0);
+}
+
+h3{
+    color: rgb(0, 255, 0);
+}
+
+h2{
+    color: rgb(0, 255, 0);
+}
+
+h1{
+    color: rgb(0, 255, 0);
+}
+
+.cerificate {
+    color: white;
+}

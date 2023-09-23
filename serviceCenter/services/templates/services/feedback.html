@@ -18,17 +18,16 @@
     {% for feedback in feedbacks%}
     <article>
         <h3>{{feedback.client.name}}</h3>
-        <h3>Оценка от 1 до 5 {{feedback.mark}} </h3>
-        
+        <h3>Оценка от 1 до 5: {{feedback.mark}} </h3>
+
         <br>
         
         <pre>
             {{ feedback.text }}
         </pre>
         <hr>
-        
-        <img src="">
 
     </article>
+    {%endfor%}
 </div>
 {% endblock  %}

@@ -7,33 +7,32 @@
 
 
 {% block content  %}
+<h1 align="center">Главная страница Олежки</h1>
 <div class="row">
 
     {% for devices in Device_type%}
-  <div class="container">
     <div class="col-12 col-sm-6 col-lg-4">
-        <div class="card-deck">
-             <div class="card m-3">
 
-            <div class="card-header">
-                <h5>{{devices.name}}</h5>
-            </div>
+            <div class="card-deck">
+                 <div class="card m-3">
 
-            <div class="card-body">
-                 <a href="{{ devices.get_absolute_url }}">
-                    <img src="{% if devices.image %}{{ devices.image.url }}{%else %}{% static 'services/img/logo.jpg' %}{% endif %}"
-                    width="70" height="70" align="center">
-                 </a>
-            </div>
-            <div class="card-footer">
-                <a href="{% url 'services:detail' devices.id %}"><button class="btn btn-warning">Оказываемые услуги</button></a>
-            </div>
-        </div>
-        </div>
+                    <div class="card-header">
+                        <h5>{{devices.name}}</h5>
+                    </div>
 
+                    <div class="card-body" align="center">
+                         <a href="{{ devices.get_absolute_url }}">
+                            <img src="{% if devices.image %}{{ devices.image.url }}{%else %}{% static 'services/img/logo.jpg' %}{% endif %}"
+                            width="70" height="70" align="midle">
+                         </a>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'services:detail' devices.id %}"><button class="btn btn-warning">Оказываемые услуги</button></a>
+                    </div>
+                </div>
+            </div>
     </div>
 
-</div>
        {% empty %}
     <p>Статей не обнаружено :(</p>
     {% endfor %}
@@ -41,15 +40,23 @@
 
 
 
-
-
-
-
     <div class="features">
-        <h1>Главная страница Олежки</h1>
-        {% for devices in object_list%}
-        <h5>{{devices.name}}</h5>
-        <img src="{{devices.image}}">
+        <h1 align="center">News</h1>
+        {% for n in News%}
+            <div  class="news">
+                 <article>
+                <h2>{{n.name}}</h2>
+                <br>
+                <p>{{n.description}}</p>
+                <img src="{{n.image.url}}">
+                <br>
+                <details>
+                    <summary>Continue</summary>
+                    {{n.full_text }}
+                </details>
+             </article>
+            </div>
+
         {% empty %}
         <p>Статей не обнаружено :(</p>
         {% endfor %}

@@ -44,22 +44,41 @@ class Client(models.Model):
 
     phone_number = models.CharField(max_length=50,)
 
+    image = models.ImageField(upload_to='static/services/img/', blank=True)
+
     def __str__(self):
         return self.email
 
 class News(models.Model):
-    image_url = models.CharField(null=False,max_length=100)
+    image = models.ImageField(upload_to='static/services/img/', blank=True)
     name = models.CharField(null=False,max_length=300)
     description = models.CharField(null=False,max_length=80)
     full_text = models.CharField(null=False,max_length=1000)
+    def __str__(self):
+        return self.name
 
 class FeedBack(models.Model):
     client = models.ForeignKey(Client
                                     , on_delete=models.CASCADE)
-    text = models.CharField(null = False, max_length=350)
+    text = models.TextField(null = False, max_length=350)
 
-    mark = models.DecimalField(null = False,max_digits=2,decimal_places=2)
+    mark = models.DecimalField(null = False,decimal_places=0,max_digits=1)
 
-    image = models.ImageField()
+    image = models.FileField(upload_to='static/services/img/', blank=True)
 
     time = models.TimeField(null= False)
+
+class Stuff(models.Model):
+    first_name = models.CharField(max_length=200)
+
+    last_name = models.CharField(max_length=200)
+
+    date_of_birth = models.DateField()
+
+    email = models.EmailField()
+
+    phone_number = models.CharField(max_length=50, )
+
+    image = models.ImageField(upload_to='static/services/img/', blank=True)
+
+    job_description = models.CharField(max_length=1000)

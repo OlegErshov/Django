@@ -25,10 +25,10 @@
                      {%for issue in issues%}
                         <tr>
                             <td>{{issue.issue_type}}</td> <td>{{issue.price}}</td>
-                            <td><a href="{% url 'services:editIssue' issue.id %}"><button class="btn btn-warning">изменить</button></a></td>
+                            <td rowspan="2"><a href="{% url 'services:editIssue' issue.id %}"><button class="btn btn-warning">изменить</button></a></td>
 
                             {% if user.is_staff %}
-                            <td>
+                            <td rowspan="2">
                                 <a href="{% url  'cart:cart_add' issue.id %}"><button class="btn btn-warning">добавить</button></a>
                                 <form action="{% url 'cart:cart_add' issue.id %}" method="post">
                                     {{ cart_form }}

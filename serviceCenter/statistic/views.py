@@ -18,7 +18,7 @@ def user_order_history(request):
     if not request.user.is_authenticated:
         raise PermissionDenied("You must be authorized")
 
-    orders = Order.objects.filter(client_id=request.user.id)
+    orders = Order.objects.all()
     order_items = dict()
     for o in orders:
         order_items[o.id] = OrderItem.objects.filter(order_id=o.id)
@@ -47,13 +47,13 @@ def shop_analyzer(request):
     if not request.user.is_staff:
         raise PermissionDenied("Your role is too weak")
 
-    orders_cost = Order.objects.values_list("cost")
+    orders_cost = Order.objects.all()
 
     total_income = 0
     total_count = 0
 
     for el in orders_cost:
-        total_income += el[0]
+        total_income += el.cost
         total_count += 1
 
     # most_valuable_product = Order.objects.order_by("purchase_count").first()

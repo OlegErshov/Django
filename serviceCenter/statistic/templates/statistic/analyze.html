@@ -9,18 +9,14 @@
 
 {% block content %}
 <div class="product-detail">
-    <h1>Total income form toys: {{ total_income }}</h1>
-    <h1>Total count are sold: {{ total_count }}</h1>
-<!--    <h1>Most valuable toy:-->
-<!--        <a href="{{ most_valuable_product.get_detail_url }}">-->
-<!--            {{ most_valuable_product.name }}</a>-->
-<!--    </h1>-->
-<!--    <h1>Least valuable toy:-->
-<!--        <a href="{{ most_valuable_product.get_detail_url }}">-->
-<!--            {{ min_valuable_product.name }}</a>-->
-<!--    </h1>-->
 
-    <img src="data:image/png;base64, {{ plot }}">
+    <h1>Total count are sold: {{ total_count }}</h1>
+
+    <figure>
+        <img src="data:image/png;base64, {{ plot }}">
+        <figcaption>По Oy количество поломок, по Оx дата</figcaption>
+    </figure>
+
 </div>
 
 {% endblock %}

@@ -41,7 +41,7 @@ class IssueForm(forms.ModelForm):
 class FeedBackForm(forms.ModelForm):
     class Meta:
         model = FeedBack
-        fields = ['client', 'text', 'image', 'mark','time']
+        fields = ['client', 'text', 'mark','time']
 
         widgets = {
             "client": forms.Select(attrs={
@@ -52,10 +52,7 @@ class FeedBackForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'введите ваш отзыв',
             }),
-            "image": forms.FileInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'здесь можно прикрепить картинку',
-            }),
+
             "mark": forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'оцените нас от 1 до 5',
@@ -64,8 +61,6 @@ class FeedBackForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Укажите дату отправки отзыва',
             }),
-
-
         }
 
 
