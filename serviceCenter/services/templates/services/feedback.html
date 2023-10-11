@@ -1,9 +1,13 @@
 {% extends "services/layout.html"  %}
+{% load static%}
 
 {% block name  %}
     <title>Feedback</title>
 {% endblock  %}
 
+{% block css  %}
+    <link rel="stylesheet" href="{% static 'services/css/layout.css'%}"/>
+{% endblock  %}
 
 {% block content  %}
 <div>

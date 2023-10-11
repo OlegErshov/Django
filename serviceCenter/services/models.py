@@ -51,9 +51,11 @@ class Client(models.Model):
 
 class News(models.Model):
     image = models.ImageField(upload_to='static/services/img/', blank=True)
-    name = models.CharField(null=False,max_length=300)
-    description = models.CharField(null=False,max_length=80)
-    full_text = models.CharField(null=False,max_length=1000)
+    name = models.CharField(null=False, max_length=300)
+    description = models.CharField(null=False, max_length=80)
+    full_text = models.TextField(null=False, max_length=1000)
+    resource = models.CharField(max_length=300, null=False,default="")
+
     def __str__(self):
         return self.name
 

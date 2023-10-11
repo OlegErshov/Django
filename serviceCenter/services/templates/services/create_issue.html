@@ -1,7 +1,12 @@
 {% extends "services/layout.html"  %}
+{% load static%}
 
 {% block name  %}
     <h1>Добавление нового устройства</h1>
+{% endblock  %}
+
+{% block css  %}
+    <link rel="stylesheet" href="{% static 'services/css/layout.css'%}"/>
 {% endblock  %}
 
 {% block content  %}

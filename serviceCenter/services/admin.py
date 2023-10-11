@@ -13,7 +13,7 @@ class DeviceAdmin(admin.ModelAdmin):
 
 @admin.register(News)
 class DeviceAdmin(admin.ModelAdmin):
-    list_display = ['image', 'name', 'description', 'full_text', ]
+    list_display = ['image', 'name', 'description', 'full_text','resource']
 
 @admin.register(Stuff)
 class DeviceAdmin(admin.ModelAdmin):

@@ -1,13 +1,57 @@
 <!DOCTYPE html>
+{% load static%}
 <html>
     <head>
         <title>Registration</title>
+        <link rel="stylesheet" href="{% static 'login/css/registration.css'%}"/>
     </head>
     <body>
-        <form action = "" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Register</button>
+        <form class="form-container" method="POST">
+             {% csrf_token %}
+            <div>
+                <!-- Email Field -->
+                <h3>Регистрация</h3>
+                  <label for="id_email">Email:</label>
+                  <input type="email" id="id_email" name="email" required>
+
+                <!-- First Name Field -->
+                <div class="">
+                  <label for="id_first_name">First Name:</label>
+                  <input type="text"  id="id_first_name" name="first_name" required>
+                </div>
+
+                <!-- Last Name Field -->
+                <div class="">
+                  <label for="id_last_name">Last Name:</label>
+                  <input type="text"  id="id_last_name" name="last_name" required>
+                </div>
+
+                <!-- Date of Birth Field -->
+                <div class="">
+                  <label for="id_date_of_birth">Date of Birth:</label>
+                  <input type="date"  id="id_date_of_birth" name="date_of_birth" required>
+                </div>
+
+                <!-- Phone Number Field -->
+                <div class="">
+                  <label for="id_phone_number">Phone Number:</label>
+                  <input type="tel"  id="id_phone_number" name="phone_number">
+                </div>
+
+                <!-- Password Field -->
+                <div class="">
+                  <label for="id_password1">Password:</label>
+                  <input type="password"  id="id_password1" name="password1" required>
+                </div>
+
+                <!-- Password Confirmation Field -->
+                <div >
+                  <label for="id_password2">Confirm Password:</label>
+                  <input  type="password" class=" button-container" id="id_password2" name="password2" required>
+                </div>
+                <button type="submit">Register</button>
+            </div>
+
         </form>
     </body>
 </html>

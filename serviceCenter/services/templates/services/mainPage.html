@@ -5,16 +5,17 @@
     <h1>Сервисный центр</h1>
 {% endblock  %}
 
+{% block css  %}
+    <link rel="stylesheet" href="{% static 'services/css/layout.css'%}"/>
+{% endblock  %}
 
 {% block content  %}
 <h1 align="center">Главная страница Олежки</h1>
-<div class="row">
+<div class="card-grid">
 
     {% for devices in Device_type%}
-    <div class="col-12 col-sm-6 col-lg-4">
 
-            <div class="card-deck">
-                 <div class="card m-3">
+                 <div class="card">
 
                     <div class="card-header">
                         <h5>{{devices.name}}</h5>
@@ -30,8 +31,6 @@
                         <a href="{% url 'services:detail' devices.id %}"><button class="btn btn-warning">Оказываемые услуги</button></a>
                     </div>
                 </div>
-            </div>
-    </div>
 
        {% empty %}
     <p>Статей не обнаружено :(</p>
@@ -39,28 +38,28 @@
 </div>
 
 
+    <h1 align="center">Главные новости для наших клиентов</h1>
 
-    <div class="features">
-        <h1 align="center">News</h1>
+
         {% for n in News%}
-            <div  class="news">
-                 <article>
-                <h2>{{n.name}}</h2>
-                <br>
-                <p>{{n.description}}</p>
-                <img src="{{n.image.url}}">
-                <br>
-                <details>
-                    <summary>Continue</summary>
-                    {{n.full_text }}
-                </details>
+            <div class="news-container">
+                <article class="news-content">
+                    <h2 class="news-title">{{n.name}}</h2>
+                    <br>
+                    <p class="news-description" >{{n.description}}</p>
+                    <img class="news-image" src="{{n.image.url}}">
+                    <br>
+                    <details class="news-text">
+                        <summary>Continue</summary>
+                        {{n.full_text }}
+                    </details>
              </article>
             </div>
 
         {% empty %}
         <p>Статей не обнаружено :(</p>
         {% endfor %}
-    </div>
+
 
 
 {% endblock  %}

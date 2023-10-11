@@ -1,0 +1,81 @@
+body {
+  /* Set the background image and specify its path */
+  background-image: url('/img/space.jpg');
+
+  /* Center the background image */
+  background-position: center;
+
+  /* Make the background image cover the entire viewport */
+  background-size: cover;
+
+  /* Fix the background image in place so it doesn't scroll */
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Set the body to the full viewport height */
+  margin: 0; /* Remove default body margin for consistent centering */
+
+}
+
+/* Style the form container */
+.form-container {
+  width: 400px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style form fields */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Style the Register button */
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.button-container{
+    text-align: center;
+}
+/* Style error messages (optional) */
+.error-message {
+  color: #d9534f;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+

@@ -1,10 +1,16 @@
 body{
     background: #2c2c2c;
+    margin: 0px;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
 }
 
-.news{
-    width: 200px;
-    padding: 50px;
+
+
+nav {
+    position: fixed;
 }
 
 aside{
@@ -16,6 +22,7 @@ aside{
     padding: 2%;
     color: #fff;
     border-right: 5px solid #4d4d4d;
+    position: fixed;
 }
 
 aside .logo{
@@ -44,12 +51,55 @@ aside ul li:hover, aside ul a:hover{
 
 }
 
-main .features{
-    color: #fff;
-    float: left;
-    margin-top: 100px;
-    text-align: center;
-    width: 75%;
+/* News container */
+.news-container {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #2c2c2c;
+}
+
+/* News image */
+.news-image {
+  flex: 1;
+  padding: 20px;
+  max-width: 300px; /* Adjust the image container width */
+}
+
+.news-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* News content */
+.news-content {
+  flex: 2;
+  padding: 20px;
+}
+
+.news-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.news-description {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.news-text {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+
+main{
+    margin-left: 400px;
 }
 
 bold{
@@ -142,9 +192,63 @@ h2{
 }
 
 h1{
-    color: rgb(0, 255, 0);
+    color: white;
 }
 
-.cerificate {
-    color: white;
+/* Card Container */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+  gap: 20px; /* Gap between cards */
+}
+
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* Card Header */
+.card-header {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+/* Card Body */
+.card-body {
+  font-size: 1rem;
+}
+
+/* Card Footer */
+.card-footer {
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* Example Button Styling */
+.card-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: #0056b3;
+}
+
+
+.card img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 10px; /* Optional padding to create space between the image and the border */
 }
