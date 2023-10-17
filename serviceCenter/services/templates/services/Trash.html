@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'services/css/trash.css'%}"/>
+
+</head>
+<body>
+    <a href="https://ria.ru/">Ссылка оканчивающаясяя на .ru</a>
+    <br>
+    <a href="https://www.belta.by/">Ссылка оканчивающаясяя на .by</a>
+    <br>
+    <a href="https://www.youtube.com/">Ссылка в которой есть ютуб</a>
+    <br>
+    <a href="https://www.google.com/">Ссылка оканчивающаясяя на другое</a>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ul>
+
+    <p>
+        Я хочу работать в фабрике инноваций и технологий, потому что вы современная и растущая компания,
+        с обширным стеком технологий и с работой на огромном числе доменов. Много моих знакомых работало
+        у вас и хорошо отзывались о внутреннем устройстве компании, коллективе и корпоративной культуре.
+        Так же я люблю английский язык и хочу развивать его параллельно работая.
+    </p>
+
+    <p class="temp_text">
+        Я хочу работать в фабрике инноваций и технологий, потому что вы современная и растущая компания,
+        с обширным стеком технологий и с работой на огромном числе доменов. Много моих знакомых работало
+        у вас и хорошо отзывались о внутреннем устройстве компании, коллективе и корпоративной культуре.
+        Так же я люблю английский язык и хочу развивать его параллельно работая.
+    </p>
+
+    <div>
+        <video controls src="{% static 'video/video.mp4' %}"></video>
+    </div>
+
+    <div>
+        <audio controls src="{% static 'audio/audio.mp3' %}"></audio>
+    </div>
+
+    <section>
+        <div class="circular-image">
+            <img src="{% static 'services/img/banner.jpg' %}" alt="Banner1">
+        </div>
+        <div class="circular-image rotating">
+            <img src="{% static 'services/img/banner.jpg' %}" alt="Banner2">
+        </div>
+        <div class="circular-image">
+            <img src="{% static '/services/img/banner.jpg' %}" alt="Banner3">
+        </div>
+    </section>
+
+    <div id="box"></div>
+</body>
+</html>

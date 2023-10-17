@@ -1,0 +1,45 @@
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+
+td:empty {
+  background-color: #f2f2f2;
+}
+
+caption {
+  font-weight: bold;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+tr:first-child {
+  font-weight: bold;
+}
+
+td:nth-child(2) {
+  background-color: #ff5733;
+  color: #fff;
+}
+
+thead th {
+  padding: 10px; /* Padding for header cells */
+  text-align: center; /* Center-align text */
+  border: 1px solid #fff; /* Border and border color */
+}
+
+table tr td:first-child {
+  background-color: #007bff; /* Set the background color to blue */
+  color: #fff; /* Set text color to white for better visibility */
+}
+
+thead {
+  background-color: #007bff; /* Background color */
+  color: #fff; /* Text color */
+  font-weight: bold; /* Bold text */
+}

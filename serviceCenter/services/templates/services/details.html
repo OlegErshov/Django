@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="{% static 'services/css/layout.css'%}"/>
+        <link rel="stylesheet" href="{% static 'services/css/details.css'%}"/>
         <title>Edit</title>
     </head>
     <body>
@@ -13,8 +14,8 @@
             </form>
 
             <h5>{{ device.name }}</h5>>
-            <table class="table table-dark table-striped ">
-                 <thead class="thead-dark">
+            <table class="">
+                 <thead class="">
                     <tr>
                         <th>Вид услуги</th> <th>цена</th> <th></th> <th></th>
                     </tr>
@@ -25,7 +26,6 @@
                         <tr>
                             <td>{{issue.issue_type}}</td> <td>{{issue.price}}</td>
                             <td rowspan="2"><a href="{% url 'services:editIssue' issue.id %}"><button class="btn btn-warning">изменить</button></a></td>
-
                             {% if user.is_staff %}
                             <td rowspan="2">
                                 <a href="{% url  'cart:cart_add' issue.id %}"><button class="btn btn-warning">добавить</button></a>
@@ -36,11 +36,9 @@
                                 </form>
                             </td>
                             {% endif %}
-
-
                         </tr>
                     {% empty %}
-                    <tr>Статей не обнаружено :(</tr>
+
                     {% endfor %}
                 </tbody>
 

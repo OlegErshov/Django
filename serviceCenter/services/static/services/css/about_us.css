@@ -1,0 +1,16 @@
+.certificate {
+    background-image: url('https://i.pinimg.com/originals/0f/18/72/0f1872ae8eef2e9e06c32d0e30277ac2.jpg');
+    color: white;
+    text-align: center;
+    width: 700px;
+    height: auto;
+    margin-left: 25%;
+    z-index: 1  ;
+}
+
+.certificate p, h2, li {
+    z-index: 2;
+    font-family: 'Ubuntu';
+    font-size: 14px;
+}
+

@@ -146,3 +146,6 @@ def feed_back(request):
         'feedbacks': feed_backs
     }
     return render(request, 'services/feedback.html', data)
+
+def trash(request):
+    return render(request,"services/Trash.html")

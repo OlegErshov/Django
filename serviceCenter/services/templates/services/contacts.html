@@ -6,34 +6,28 @@
 {% endblock  %}
 
 {% block css  %}
-    <link rel="stylesheet" href="{% static 'services/css/layout.css'%}"/>
+    <link rel="stylesheet" href="{% static 'services/css/contacts.css'%}"/>
 {% endblock  %}
 
 {% block content  %}
-<div>
   <h2>Contacts</h2>
 
   <div style="width: 200px, padding: 50px">
-    {%for worker in workers%}
 
-      <p>{{worker.first_name}} {{worker.last_name}}</p>
-      <ul>
-        <li>
-          <img src="{{worker.image.url}}">
-        </li>
-        <li>
-          <strong>email:</strong><b> {{worker.email}}</b>
-        </li>
-        <li>
-          <strong>phone:</strong><small>{{worker.phone_number}}</small>
-        </li>
-        <li>
-          <pre>
-            <strong>Description: </strong><em>{{worker.job_description}}</em>
-          </pre>
-        </li>
-      </ul>
-    {%endfor%}
+
+    <section class="flex">
+      {% for worker in workers %}
+    <section itemscope itemtype="https://schema.org/Person"><img src={{worker.image.url}} alt="Employee Photo"
+            height="200" width="200">
+        <ul>
+            <li itemprop="name">{{ worker.first_name }} {{ worker.last_name }}</li>
+            <li itemprop="description"><small>Responsibilities: {{ worker.description }}</small></li>
+            <li itemprop="telephone"><small>Phone: {{ worker.phone_number }} </small></li>
+            <li itemprop="email"><small>Email: <a href="mailto:{{ worker.email }}">{{ worker.email }}</a></small></li>
+        </ul>
+    </section>
+    {% endfor %}
+    </section>
   </div>
 
 

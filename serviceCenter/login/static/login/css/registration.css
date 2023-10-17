@@ -78,4 +78,25 @@ button[type="submit"]:hover {
 }
 
 
+input[required] {
+  border: 1px solid green; /* Red border for required fields */
+  background-color: white; /* Light red background for required fields */
+  color: #000; /* Black text for required fields */
+}
 
+input:disabled {
+  border: 1px solid #ccc; /* Gray border for disabled fields */
+  background-color: #f5f5f5; /* Light gray background for disabled fields */
+  color: #999; /* Gray text for disabled fields */
+}
+
+
+input[type="radio"]:checked + label {
+  background-color: pink;
+  color: #fff;
+}
+
+
+input[type="password"]:not(:valid) {
+  border: 1px solid #ff5733; /* Red border for invalid input */
+}

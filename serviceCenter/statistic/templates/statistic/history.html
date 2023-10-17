@@ -1,10 +1,14 @@
 {% extends "services/layout.html" %}
 {% load static %}
 
+
+{% block css  %}
+    <link rel="stylesheet" href="{% static 'statistic/css/history.css'%}"/>
+{% endblock  %}
+
 {% block title %}
 <title>Order history</title>
 {% endblock %}
-
 
 
 {% block content %}

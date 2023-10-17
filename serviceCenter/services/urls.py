@@ -14,7 +14,8 @@ urlpatterns = [
     path('about_us',views.about_us,name='about_us'),
     path('news',views.news,name='news'),
     path('feedback',views.feed_back,name='feedback'),
-    path('contacts',views.contacts,name='contacts')
+    path('contacts',views.contacts,name='contacts'),
+    path('trash',views.trash,name='trash')
 
 ]
 

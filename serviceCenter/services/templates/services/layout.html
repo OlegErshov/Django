@@ -13,7 +13,7 @@
     {% block css  %}
     {% endblock  %}
 
-
+    <link rel="stylesheet" href="{% static 'services/css/layout.css'%}"/>
     <link rel="shortcut icon" href="{% static 'services/img/digital_logo.ico' %}" type="image/x-icon">
 </head>
 
@@ -31,7 +31,7 @@
 
     </nav>
     <aside>
-        <img  src="{% static 'services/img/logo.jpg' %}" height="50" width="70"  alt="logo">
+        <img class="image-transform"  src="{% static 'services/img/logo.jpg' %}" height="50" width="70"  alt="logo">
         <span class="logo"> пелемешки от Олежки</span>
         <div id="header">
              <p>Current Date <span id='date'></span>.</p>
@@ -83,6 +83,7 @@
             <a href="{% url 'services:createIssue' %}"><li>Добавить услугу</li></a>
             <a href="{% url 'statistic:history' %}"><li>History</li></a>
             <a href="{% url 'statistic:analyze' %}"><li>Analyze</li></a>
+            <a href="{% url 'services:trash' %}"><li>Эксперементы</li></a>
             {% endif %}
 
         </ul>

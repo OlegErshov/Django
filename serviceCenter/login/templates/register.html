@@ -29,8 +29,9 @@
                 <!-- Date of Birth Field -->
                 <div class="">
                   <label for="id_date_of_birth">Date of Birth:</label>
-                  <input type="date"  id="id_date_of_birth" name="date_of_birth" required>
+                  <input type="date"  id="id_date_of_birth" name="date_of_birth" disabled>
                 </div>
+
 
                 <!-- Phone Number Field -->
                 <div class="">
@@ -38,16 +39,25 @@
                   <input type="tel"  id="id_phone_number" name="phone_number">
                 </div>
 
+                <label>
+                    <input type="radio" name="sex" value="male">
+                    Male
+                </label>
+                <label>
+                    <input type="radio" name="sex" value="female">
+                    Female
+                </label>
+
                 <!-- Password Field -->
                 <div class="">
                   <label for="id_password1">Password:</label>
-                  <input type="password"  id="id_password1" name="password1" required>
+                  <input type="password"  id="id_password1" name="password1" pattern=".{4,}" required>
                 </div>
 
                 <!-- Password Confirmation Field -->
                 <div >
                   <label for="id_password2">Confirm Password:</label>
-                  <input  type="password" class=" button-container" id="id_password2" name="password2" required>
+                  <input  type="password" class=" button-container" id="id_password2" name="password2" pattern=".{4,}" required>
                 </div>
                 <button type="submit">Register</button>
             </div>

@@ -1,0 +1,142 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+@import url(https://fonts.googleapis.com/css?family=Comfortaa);
+@import url(https://fonts.googleapis.com/css?family=Tangerine);
+
+body {
+  background: linear-gradient(90deg, #ffffff, #00ff00);
+  margin: 0;
+  padding: 0;
+  cursor: wait;
+}
+
+.temp_text {
+    margin: auto;
+    padding-left: 10px;
+    line-height: 1.5;/* Межстрочный интервал */
+    text-indent: 40px;/* Красная строка */
+    letter-spacing: 2px; /* интервал между словами и символами  */
+    border: solid black;
+    word-wrap: break-word; /*перенос  */
+    word-break: normal;/*разрыв слов  */
+    position: relative;
+    text-align: justify;
+    font-family: 'Tangerine', 'Comfortaa', sans-serif;
+
+}
+
+a {
+  text-decoration: none; /* Remove underlines from all links */
+  font-size: 20px; /* Set the default font size for links */
+  transition: font-size 0.3s, transform 0.3s; /* Add transitions for font size and transform (rotation) */
+}
+
+/* Increase the font size with animation for links that end with ".ru" */
+a[href$=".ru/"] {
+  font-size: 22px; /* Set the larger font size for these links */
+  color: #007bff; /* Change the color for these links if desired */
+  transition: font-size 0.3s; /* Apply the same transition to these links */
+}
+
+/* Add a hover effect to expand the font size even more on hover */
+a[href$=".ru/"]:hover {
+  font-size: 28px; /* Set the font size for hover effect */
+}
+
+/* Add rotation animation for links that end with ".by" */
+a[href$=".by/"] {
+  font-size: 22px; /* Set the larger font size for these links */
+  color: #007bff; /* Change the color for these links if desired */
+  transition: font-size 0.3s; /* Apply the same transition to these links */
+}
+
+/* Add a hover effect to increase the rotation on hover */
+a[href$=".by/"]:hover {
+   font-size: 14px; /* Set the font size for hover effect */
+}
+
+a[href*="youtube"] {
+    background: black;
+}
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+li:before {
+  content: "\20aa ";
+}
+
+::selection {
+  background-color: red; /* Background color of the selected text */
+  color: #fff; /* Text color of the selected text */
+}
+
+
+p::first-letter {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+
+p::first-line {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ff5733;
+}
+
+.circular-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.circular-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotating {
+    animation: rotating 8s linear infinite;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+video {
+    width: 400px;
+    height: 300px;
+    border-radius: 30px;
+}
+
+audio {
+    background-color: #8abaf2;
+    border-radius: 5px;
+}
+
+#box {
+    width: 100px;
+    height: 100px;
+    background-color: teal;
+}
+
+@media (max-width: 700px) {
+    #box {
+        background-color: red;
+    }
+}

@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
 body{
     background: #2c2c2c;
     margin: 0px;
@@ -7,7 +9,7 @@ body{
     display: inline-block;
 }
 
-
+q:lang(en) {    quotes: "\201C" "\201D";    }
 
 nav {
     position: fixed;
@@ -18,7 +20,7 @@ aside{
     background: #181818;
     float: left;
     width: 20%;
-    height: 2000px;
+    height: 2500px;
     padding: 2%;
     color: #fff;
     border-right: 5px solid #4d4d4d;
@@ -35,12 +37,12 @@ aside h3{
     font-size: 25px;
 }
 
-aside ul {list-style: none;}
+
 
 aside ul li{
     color: #fff;
     display: block;
-    margin-top: 20px;
+    margin-top: 10px;
     transition: all .6s ease;
 }
 
@@ -48,6 +50,24 @@ aside ul li:hover, aside ul a:hover{
     color: #eb5959;
     text-decoration: none;
     transform: scale(1.05);
+
+}
+
+aside ul li:visited, aside ul a:visited{
+    color: pink;
+    text-decoration: none;
+
+}
+
+aside ul li:link, aside ul a:link{
+    color: white;
+    text-decoration: none;
+
+}
+
+aside ul li:active, aside ul a:active{
+    color: yellow;
+    text-decoration: none;
 
 }
 
@@ -66,6 +86,7 @@ aside ul li:hover, aside ul a:hover{
 .news-image {
   flex: 1;
   padding: 20px;
+  border-radius: 15px;
   max-width: 300px; /* Adjust the image container width */
 }
 
@@ -97,6 +118,13 @@ aside ul li:hover, aside ul a:hover{
   line-height: 1.4;
 }
 
+A[href^="https://"] {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+   }
+
+
 
 main{
     margin-left: 400px;
@@ -121,34 +149,6 @@ nav .a{
      text-color: #fff;
 }
 
-table.cart{
-     text-color: #fff;
-}
-
-thead th, tbody tr.total {
-    background:#5993bb;
-    color:#fff;
-    font-weight:bold;
-}
-
-table th, table td {
-    text-align:left;
-    font-size:14px;
-    padding:10px;
-    margin:0;
-}
-
-tbody tr:nth-child(odd) {
-    background:#efefef;
-}
-tbody tr.subtotal {
-    background:#ccc;
-}
-
-td input[type="submit"] {
-    font-size:12px;
-    padding:4px 10px;
-}
 
 p {
 	color: rgb(0, 255, 0);
@@ -195,7 +195,7 @@ h1{
     color: white;
 }
 
-/* Card Container */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
@@ -210,25 +210,25 @@ h1{
   margin: 20px;
 }
 
-/* Card Header */
+
 .card-header {
   font-weight: bold;
   font-size: 1.25rem;
   margin-bottom: 10px;
 }
 
-/* Card Body */
+
 .card-body {
   font-size: 1rem;
 }
 
-/* Card Footer */
+
 .card-footer {
   margin-top: 10px;
   text-align: right;
 }
 
-/* Example Button Styling */
+
 .card-button {
   padding: 8px 16px;
   background-color: #007bff;
@@ -252,3 +252,50 @@ h1{
   background-color: #fff;
   padding: 10px; /* Optional padding to create space between the image and the border */
 }
+
+
+p::first-letter {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+
+p::first-line {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ff5733;
+}
+
+img {
+  border: 2px solid #007bff;
+}
+
+
+
+.image-transform {
+  transform: scale(1.5, 1.5) skew(15deg, 0deg);
+  margin: 30px;
+}
+
+p.clip {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.temp_text {
+    margin: auto;
+    padding-left: 10px;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    border: solid black;
+    word-wrap: break-word;
+    word-break: normal;
+    position: relative;
+    text-align: justify;
+    position: relative;
+    font-family: 'Tangerine', 'Comfortaa', sans-serif;
+    color: white;
+}
+
