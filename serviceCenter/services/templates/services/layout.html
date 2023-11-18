@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="{% static 'services/css/layout.css'%}"/>
     <link rel="shortcut icon" href="{% static 'services/img/digital_logo.ico' %}" type="image/x-icon">
+    <script src="{% static 'services/js/timer.js' %}" defer></script>      
 </head>
 
 
@@ -33,47 +34,16 @@
     <aside>
         <img class="image-transform"  src="{% static 'services/img/logo.jpg' %}" height="50" width="70"  alt="logo">
         <span class="logo"> пелемешки от Олежки</span>
-        <div id="header">
-             <p>Current Date <span id='date'></span>.</p>
-            <p>Current time <span id='time'></span></p>
-            <p>Current time zone <span id='zone'></span></p>
-              <script>
-                    const today = new Date();
-                    const yyyy = today.getFullYear();
-                    let mm = today.getMonth() + 1; // Months start at 0!
-                    let dd = today.getDate();
-                    let h = today.getHours();
-                    if (h<10)
-                        h = '0' + h;
-                    let min = today.getMinutes();
-                    if (min < 10)
-                        min = '0' + min;
-                    let sec = today.getSeconds();
-                    if (sec < 10)
-                        sec = '0' + sec;
-
-                    if (dd < 10) dd = '0' + dd;
-                    if (mm < 10) mm = '0' + mm;
-
-                    let formattedToday = dd + '/' + mm + '/' + yyyy;
-                    let time = h+":"+min+":"+sec;
-                    let tz = -(new Date().getTimezoneOffset() / 60);
-                    if(tz>0){
-                        tz = "+" + tz;
-                    }
-                    tz = "UTC" + tz;
-                    document.getElementById('date').innerHTML=formattedToday;
-                    document.getElementById('time').innerHTML=time;
-                    document.getElementById('zone').innerHTML=tz;
-            </script>
-
-        </div>
         <div>
             <q>{{quote}}</q>
         </div>
+        <hr>
+        <div id="countdown"></div>
+        <hr>
         <h3>Навигация</h3>
         <ul>
-            <a href="{% url 'services:home' %}"><li>Главная</li></a>
+            <a href="{% url 'personal_account:personal_account' %}"><li>Личный аккаунт</li></a>
+            <a href="{% url 'services:promo_codes_view' %}"><li>Купоны</li></a>
             <a href="{% url 'services:services' %}"><li>Наши услуги</li></a>
             <a href="{% url 'services:contacts'%}"><li>Контакты</li></a>
             <a href="{% url 'services:about_us'%}"><li>О нас</li></a>
@@ -112,6 +82,7 @@
         {% block content  %}
         {% endblock  %}
     </main>
+    
 </body>
 
 </html>

@@ -1,0 +1,46 @@
+{% extends "services/layout.html"  %}
+{%load static%}
+{% block name  %}
+    <title>Promo codes</title>
+{% endblock  %}
+
+{% block content  %}
+<hr>
+<h1>Promo codes</h1>
+
+{% if promo_codes|length > 0 %}
+<h2>Available:</h2>
+<ul class="type_unicode">
+    {% for promo in promo_codes %}
+    {% if promo.active %}
+    <li  class="active-discount" itemscope itemtype="https://schema.org/Offer">
+        <p>Description: {{ promo.name }}</p>
+        <p>Promo nubmer: {{ promo.promo_code }}</p>
+        <p>Discount: <span class="discount">{{ promo.discount_size }}%</span></p>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{%endif%}
+
+{% if promo_codes|length > 0 %}
+<h2>Not available:</h2>
+<ul class="circle">
+    {% for promo in promo_codes %}
+    {% if not promo.active %}
+    <li class="inactive-discount" itemscope itemtype="https://schema.org/Offer">
+        <p>Description: {{ promo.name }}</p>
+        <p>Promo nubmer: {{ promo.promo_code }}</p>
+        <p>Discount: <span class="discount">{{ promo.discount_size }}%</span></p>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/color/jquery.color-2.2.0.min.js"></script>
+<script src="{% static 'services/js/promo_codes.js' %}" defer></script>
+
+{% endblock  %}

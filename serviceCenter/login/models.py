@@ -11,7 +11,6 @@ class CustomUser(AbstractUser):
     email = models.EmailField()
     phone_number = models.CharField(max_length=50,
                                     help_text='Enter phone number')
-
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'username'

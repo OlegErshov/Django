@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Device_type,Issue,News,Stuff,FeedBack
+from .models import Device_type,Issue,News,Stuff,FeedBack, BannerChangeTimer,PromoCode
 # Register your models here.
 
 
@@ -22,4 +22,12 @@ class DeviceAdmin(admin.ModelAdmin):
 @admin.register(FeedBack)
 class DeviceAdmin(admin.ModelAdmin):
     list_display = ['client', 'text', 'mark','image', 'time']
+
+@admin.register(BannerChangeTimer)
+class BannerChangeTimerAdmin(admin.ModelAdmin):
+    list_display = ['milliseconds']
+
+@admin.register(PromoCode)
+class CouponAdmin(admin.ModelAdmin):
+    pass
 

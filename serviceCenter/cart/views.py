@@ -29,6 +29,7 @@ def cart_remove(request, issue_id):
     book = get_object_or_404(Issue, id=issue_id)
     cart.remove(book)
     return redirect('cart:cart_details')
+
 def cart_detail(request):
     if not request.user.is_authenticated:
         raise PermissionDenied("Net dostupa")

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Device_type(models.Model):
 
@@ -84,3 +85,18 @@ class Stuff(models.Model):
     image = models.ImageField(upload_to='static/services/img/', blank=True)
 
     job_description = models.CharField(max_length=1000)
+
+
+
+class BannerChangeTimer(models.Model):
+    milliseconds = models.IntegerField(
+        validators=[MinValueValidator(1000), MaxValueValidator(30000)])
+    
+
+class PromoCode(models.Model):
+    promo_code = models.IntegerField(unique=True,
+                                     validators=[MinValueValidator(1), MaxValueValidator(10000)])
+    name = models.CharField(max_length=100)
+    discount_size = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(100)])
+    active = models.BooleanField(default=True)

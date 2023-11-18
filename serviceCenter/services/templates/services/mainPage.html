@@ -7,28 +7,48 @@
 
 {% block css  %}
     <link rel="stylesheet" href="{% static 'services/css/layout.css'%}"/>
+    <link rel="stylesheet" href="{% static 'services/css/main_page.css'%}"/>
 {% endblock  %}
 
 {% block content  %}
 <h1 align="center">Главная страница Олежки</h1>
-<div class="card-grid">
+<section>
 
+    <div class="circular-image">
+        <a href="https://www.euronews.com/travel/travel-news"><img src="{% static '/services/img/banner1.jpg' %}"
+                alt="Banner1"></a>
+    </div>
+    
+    <div class="circular-image">
+        <a href="https://www.travel.ru/"><img src="{% static '/services/img/banner2.jpg' %}" alt="Banner2"></a>
+    </div>
+
+    <div class="circular-image">
+       
+        <a href="https://minsk-travel.by/"><img src="{% static '/services/img/banner3.png' %}" alt="Banner3"></a>
+    </div>
+
+    {% if user.is_superuser %}
+    <form method="POST">
+        {% csrf_token %}
+        <label for="interval">Interval in milliseconds:</label>
+        <input type="number" id="interval" value="5000" name="milliseconds">
+        <input type="submit">
+    </form>
+    {% endif %}
+</section>
+
+<div class="flex">
     {% for devices in Device_type%}
-
-                 <div class="card">
-
-                    <div class="card-header">
-                        <h5>{{devices.name}}</h5>
-                    </div>
-
-                    <div class="card-body" align="center">
-                         <a href="{{ devices.get_absolute_url }}">
-                            <img src="{% if devices.image %}{{ devices.image.url }}{%else %}{% static 'services/img/logo.jpg' %}{% endif %}"
-                            width="70" height="70" align="midle">
-                         </a>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{% url 'services:detail' devices.id %}"><button class="btn btn-warning">Оказываемые услуги</button></a>
+                <div class="card-wrapper">
+                    <div class="card">
+                             
+                                <img src="{% if devices.image %}{{ devices.image.url }}{%else %}{% static 'services/img/logo.jpg' %}{% endif %}"
+                                width="70" height="70" align="midle">
+                             
+                       
+                            <a href="{% url 'services:detail' devices.id %}"><button class="btn btn-warning">Оказываемые услуги</button></a>
+                        
                     </div>
                 </div>
 
@@ -39,8 +59,6 @@
 
 
     <h1 align="center">Главные новости для наших клиентов</h1>
-
-
         {% for n in News%}
             <div class="news-container">
                 <article class="news-content">
@@ -62,7 +80,14 @@
         <p>Статей не обнаружено :(</p>
         {% endfor %}
 
+<script>    
+      window.milliseconds = '{{ milliseconds }}';
+</script>
 
+<script src="{% static 'services/js/classes.js' %}" defer></script>
+<script src="{% static 'services/js/scrolling.js' %}" defer></script>
+<script src="{% static 'services/js/main.js' %}" defer></script> 
+<script src="{% static 'services/js/card.js' %}" defer></script>
 
 {% endblock  %}
 

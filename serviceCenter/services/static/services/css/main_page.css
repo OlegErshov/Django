@@ -1,16 +1,41 @@
 /* Card Container */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+  grid-template-columns: repeat(3, 1); /* Three equal-width columns */
   gap: 20px; /* Gap between cards */
 }
 
-.card {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background-color: #fff;
-  padding: 20px;
-  margin: 20px;
+.card-wrapper {
+  min-height: 45ch;
+  position: relative;
+}
+
+.card{
+  --posx: 50%;
+  --posy: 50%;
+  --rotateX: 0;
+  --rotateY: 0;
+  inset: 1rem;
+  border: 2px solid #fff2;  
+  border-radius: 1em;
+  background-color: greenyellow;
+  transform: 
+    rotateY(var(--rotateX)) 
+    rotateX(var(--rotateY));
+}
+
+@keyframes reset-card{
+  to {
+    background-position: 50% 50%;
+    transform: 
+      rotateY(0) 
+      rotateX(0);
+  }
 }
 
 /* Card Header */

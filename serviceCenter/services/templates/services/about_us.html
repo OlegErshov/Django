@@ -62,6 +62,49 @@
         <p><strong>Our Certification Organization</strong></p>
         <p>Sign_____________________________</p>
 </div>
+
+<section>
+    <form method="POST" id="form">
+        {% csrf_token %}
+
+        <label>
+            <input type="checkbox" name="font-size-checkbox" id="font-size-checkbox" onchange="toggleFontSize()"> Change
+            font size:
+        </label>
+        <br>
+
+        <div id="font-size-field" style="display: none;">
+            <input type="range" id="fontSize" name="fontSize" min="12" max="24" step="1">
+        </div>
+        <br>
+
+        <label>
+            <input type="checkbox" name="text-color-checkbox" id="text-color-checkbox" onchange="toggleTextColor()">
+            Change text colour:
+        </label>
+        <br>
+
+        <div id="text-color-field" style="display: none;">
+            <input type="color" id="textColor" name="textColor">
+        </div>
+        <br>
+
+        <label>
+            <input type="checkbox" name="background-color-checkbox" id="background-color-checkbox"
+                onchange="toggleBackgroundColor()"> Change background colour:
+        </label>
+        <br>
+
+        <div id="background-color-field" style="display: none;">
+            <input type="color" id="backgroundColor" name="backgroundColor">
+        </div>
+        <br>
+
+        <input type="submit">
+    </form>
+
+</section>
+
 <h3 class="h3 mt-3 m-lg-4 mb-3">History</h3>
 <ul class="list-group list-group-flush m-lg-5">
 
@@ -130,5 +173,5 @@
     <meta itemprop="name" content="Видео Рамзи">
 </div>
 
-
+<script src="{% static 'services/js/about_us.js' %}" defer></script>
 {% endblock  %}

@@ -1,7 +1,9 @@
 from django.urls import path
 from .import views
 
+
 app_name = 'services'
+
 
 urlpatterns = [
     path('', views.all_devices, name='home'),
@@ -15,7 +17,6 @@ urlpatterns = [
     path('news',views.news,name='news'),
     path('feedback',views.feed_back,name='feedback'),
     path('contacts',views.contacts,name='contacts'),
-    path('trash',views.trash,name='trash')
-
+    path('trash',views.trash,name='trash'),
+    path('promo_codes', views.promo_codes_view, name='promo_codes_view')
 ]
-

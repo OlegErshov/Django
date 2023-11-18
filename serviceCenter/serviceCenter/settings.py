@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'login',
     'services',
     'statistic',
+    'personal_account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

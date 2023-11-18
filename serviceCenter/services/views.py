@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Device_type, Issue,News,FeedBack, Stuff
+from .models import Device_type, Issue,News,FeedBack, Stuff,BannerChangeTimer,PromoCode
 from .forms import DeviceForm, IssueForm, FeedBackForm
 from django.views.generic import ListView
 from django.core.exceptions import PermissionDenied
@@ -25,15 +25,19 @@ def services(request):
 def all_devices(request):
     device_types = Device_type.objects.all()
     news = News.objects.all()
-    country = None
-    sort = request.GET.get('sort')
-    min_cost = request.GET.get('min_cost')
-    max_cost = request.GET.get('max_cost')
+
+    if (request.method == "POST" and request.user.is_superuser):
+            time = BannerChangeTimer.objects.get(id=1)
+            time.milliseconds = request.POST.get('milliseconds')
+            time.save()
+    
+    time = BannerChangeTimer.objects.get(id=1)
     quote = requests.get('https://favqs.com/api/qotd').json()
 
     return render(request, 'services/mainPage.html',
                   {'Device_type': device_types,
                    'News': news,
+                   'milliseconds': time.milliseconds,
                    'quote': quote['quote']['body']})
 
 def create(request):
@@ -149,3 +153,7 @@ def feed_back(request):
 
 def trash(request):
     return render(request,"services/Trash.html")
+
+def promo_codes_view(request):
+    promo_codes = PromoCode.objects.all()
+    return render(request, "services/promo_codes.html", {'promo_codes': promo_codes})
